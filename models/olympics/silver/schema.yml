@@ -1,0 +1,38 @@
+version: 2
+
+models:
+    - name: int_athletes
+      description: "Table for athletes unique ID and names"
+      columns:
+          - name: athlete_id
+            # tests:
+                # - not_null
+
+    - name: int_athletes_stats
+      description: "A table to show each athelets stats to maintain uniqueness"
+      columns:
+          - name: athlete_stats_id
+            # tests:
+                # - unique
+                # - not_null
+
+    - name: int_events
+      columns:
+          - name: events_id
+            # tests:
+                # - unique
+                # - not_null
+
+    - name: int_games
+      columns:
+          - name: game_id
+            tests:
+                - unique
+                - not_null
+
+    - name: int_results
+      columns:
+          - name: result_id
+            # tests:
+            #     - unique
+            #     - not_null
