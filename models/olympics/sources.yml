@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: olympics
+    schema: roshsb2s
+    tables:
+      - name: olympics_raw
