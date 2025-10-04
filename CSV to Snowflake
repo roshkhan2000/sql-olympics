@@ -1,0 +1,52 @@
+// Creating a schema, stage, and initial table in Snowflake
+
+CREATE SCHEMA roshsb2s
+;
+
+USE TIL_PORTFOLIO_PROJECTS.roshsb2s
+;
+
+CREATE STAGE IF NOT EXISTS olympics_data FILE_FORMAT = (TYPE = 'CSV')
+;
+
+LIST @olympics_data
+;
+
+SELECT
+    t.$1,
+    t.$2,
+    t.$3
+FROM
+    @olympics_data t
+    ;
+
+CREATE
+    OR REPLACE FILE FORMAT olympics_csv_format TYPE = 'CSV' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+;
+
+CREATE
+    OR REPLACE TABLE olympics_raw (
+        id bigint,
+        name varchar(1024),
+        sex varchar(1024),
+        age varchar(1024),
+        height varchar(1024),
+        weight varchar(1024),
+        team varchar(1024),
+        noc varchar(1024),
+        games varchar(1024),
+        year bigint,
+        season varchar(1024),
+        city varchar(1024),
+        sport varchar(1024),
+        event varchar(1024),
+        medal varchar(1024),
+        noc_region varchar(1024),
+        noc_notes varchar(1024)
+    )
+;
+
+COPY INTO olympics_raw
+FROM
+    @olympics_data FILE_FORMAT = (FORMAT_NAME = olympics_csv_format) ON_ERROR = 'CONTINUE'
+;
