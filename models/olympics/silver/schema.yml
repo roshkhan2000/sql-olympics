@@ -5,23 +5,24 @@ models:
       description: "Table for athletes unique ID and names"
       columns:
           - name: athlete_id
-            # tests:
-                # - not_null
+            tests:
+                - not_null
+                - unique
 
     - name: int_athletes_stats
       description: "A table to show each athelets stats to maintain uniqueness"
       columns:
           - name: athlete_stats_id
-            # tests:
-                # - unique
-                # - not_null
+            tests:
+                - unique
+                - not_null
 
     - name: int_events
       columns:
           - name: events_id
-            # tests:
-                # - unique
-                # - not_null
+            tests:
+                - unique
+                - not_null
 
     - name: int_games
       columns:
@@ -33,6 +34,6 @@ models:
     - name: int_results
       columns:
           - name: result_id
-            # tests:
-            #     - unique
-            #     - not_null
+            tests:
+                - unique
+                - not_null
