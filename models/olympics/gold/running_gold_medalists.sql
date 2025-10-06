@@ -1,7 +1,7 @@
 SELECT
     r.result_id,
     r.athlete_id,
-    s.sex AS sex
+    s.sex AS sex,
     a.name AS athelete_name,
     r.event_id,
     e.event AS event,
